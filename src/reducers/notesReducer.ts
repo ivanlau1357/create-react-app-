@@ -1,4 +1,4 @@
-import { Action } from '../actions'
+import { Action, ActionSuccess } from '../actions/actions'
 export interface NotesState {
     notes: string[];
 }
@@ -7,14 +7,19 @@ const initialState: NotesState = {
     notes:[]
 }
 
-type actions = Action
+type noteActions = Action | ActionSuccess
 
-const notesReducer = (state: NotesState = initialState, action: actions) => {
+const notesReducer = (state: NotesState = initialState, action: noteActions) => {
     switch(action.type) {
         case "ADD_NOTE": {
             return {
                 ...state,
-            notes: [...state.notes, action.payload]
+            }
+        }
+        case "ADD_NOTE_SUCCESS": {
+            return {
+                ...state,
+                notes: [...state.notes, action.payload]
             }
         }
         default: 

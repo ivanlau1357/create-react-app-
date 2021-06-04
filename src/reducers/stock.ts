@@ -1,16 +1,22 @@
 import { FETCH_STOCK_PRICE_REQUEST, FETCH_STOCK_PRICE_SUCCESS } from '../actions/stock'
+
+export type Stock = {
+    price?: string;
+    volume?: string;
+    change?: string;
+}
 export interface StockState {
     stock: {
-        bitcoin?: string;
-        ether?: string;
-        litecoin?: string;
-        monero?: string;
-        ripple?: string;
-        dogecoin?: string;
-        dash?: string;
-        maidsafeecoin?: string;
-        lisk?: string;
-        storjconX?: string;
+        bitcoin?: Stock;
+        ether?: Stock;
+        litecoin?: Stock;
+        monero?: Stock;
+        ripple?: Stock;
+        dogecoin?: Stock;
+        dash?: Stock;
+        maidsafeecoin?: Stock;
+        lisk?: Stock;
+        storjconX?: Stock;
     };
 }
 

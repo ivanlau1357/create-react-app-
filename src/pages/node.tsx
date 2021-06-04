@@ -1,7 +1,7 @@
 import React from 'react';
 import { NewNoteInput } from '../components/NewNoteInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNote } from '../actions/actions';
+import { addNote } from '../actions/action';
 import { Store } from '../store';
 
 // eslint-disable-next-line no-empty-pattern

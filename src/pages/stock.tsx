@@ -1,12 +1,34 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { StockTicket } from '../components/StockTicket';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { useDispatch } from 'react-redux';
+import { fetchStockPrice } from '../actions/stock';
 
 // eslint-disable-next-line no-empty-pattern
 const StockPage = ({
     
 }) => {
+    const dispatch = useDispatch();
+
+    const fetchStock = useCallback(() => {
+        console.log('11111111111')
+        const payload = ['bitcoin', 'ether', 'litecoin', 'monero', 'ripple', 'dogecoin', 'dash', 'maidsafeecoin', 'lisk', 'storjconX']
+        dispatch(fetchStockPrice(payload))
+    },[dispatch])
+    
+    useEffect(() => {
+        console.log('initalizing interval');
+        const interval = setInterval(() => {
+            fetchStock();
+        }, 5000)
+        
+        return () => {
+            console.log('clearing interval');
+            clearInterval(interval);
+        }
+    }, [fetchStock])
+    
     return (
         <>
             <Container maxWidth="md">

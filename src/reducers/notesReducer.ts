@@ -1,4 +1,4 @@
-import { Action, ActionSuccess } from '../actions/actions'
+import { Action, ActionSuccess } from '../actions/action'
 export interface NotesState {
     notes: string[];
 }

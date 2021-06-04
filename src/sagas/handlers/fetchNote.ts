@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import { Action, ActionSuccess } from '../../actions/actions'
+import { Action, ActionSuccess } from '../../actions/action'
 
 export function* fetchNode(action: Action) {
     yield put({

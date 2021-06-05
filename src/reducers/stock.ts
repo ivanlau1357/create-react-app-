@@ -1,27 +1,17 @@
 import { FETCH_STOCK_PRICE_REQUEST, FETCH_STOCK_PRICE_SUCCESS } from '../actions/stock'
 
 export type Stock = {
+    name?: string;
     price?: string;
     volume?: string;
     change?: string;
 }
 export interface StockState {
-    stock: {
-        bitcoin?: Stock;
-        ether?: Stock;
-        litecoin?: Stock;
-        monero?: Stock;
-        ripple?: Stock;
-        dogecoin?: Stock;
-        dash?: Stock;
-        maidsafeecoin?: Stock;
-        lisk?: Stock;
-        storjconX?: Stock;
-    };
+    stocks: Stock[]
 }
 
 const initialState: StockState = {
-    stock: {},
+    stocks: [],
 }
 
 type StockActions = FETCH_STOCK_PRICE_REQUEST | FETCH_STOCK_PRICE_SUCCESS
@@ -36,9 +26,7 @@ const StockReducer = (state: StockState = initialState, action: StockActions) =>
         case "FETCH_STOCK_PRICE_SUCCESS": {
             return {
                 ...state,
-                stock: {
-                    ...state.stock,
-                }
+                stocks: action.payload
             }
         }
         default: 

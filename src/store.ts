@@ -21,9 +21,18 @@ export const store = createStore(
 
 saga.run(rootSaga);
 
+export type Stock = {
+    name?: string;
+    price?: string;
+    volume?: string;
+    change?: string;
+}
+
 export interface Store {
     notesReducer: {
         notes: string[];
     }
-    notes: string[];
+    stockReducer: {
+        stocks: Stock[];
+    }
 }

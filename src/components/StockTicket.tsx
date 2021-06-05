@@ -34,11 +34,11 @@ const ExtraInfoWrapper = styled.div`
 `
 
 const VolumeWrapper = styled.div`
-    width:50%
+    width:55%
 `
 
 const ChangeWrapper = styled.div`
-    width:50%
+    width:45%
 `
 
 const VolumeTitle = styled.div`

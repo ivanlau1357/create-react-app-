@@ -14,6 +14,7 @@ const NodePage = ({
     const onAddNote = (note: string) => {
         dispatch(addNote(note))
       }
+
     return (
         <>
             <NewNoteInput addNote={onAddNote}/>

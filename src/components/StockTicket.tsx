@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { StockNameMap } from '../constants/stock'
 
 interface IStockTicketProps {
     price: string;
@@ -9,7 +10,7 @@ interface IStockTicketProps {
 }
 
 const Container = styled.div`
-    width: 200px;
+    width: 250px;
     height: 100px;
     margin: 10px;
     padding: 10px;
@@ -34,10 +35,12 @@ const ExtraInfoWrapper = styled.div`
 `
 
 const VolumeWrapper = styled.div`
+    overflow-wrap: break-word;
     width:55%
 `
 
 const ChangeWrapper = styled.div`
+    overflow-wrap: break-word;
     width:45%
 `
 

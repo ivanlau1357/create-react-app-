@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStockPrice } from '../actions/stock';
 import { Store } from '../store';
+import { StockNameMap } from '../constants/stock'
 
 // eslint-disable-next-line no-empty-pattern
 const StockPage = ({
@@ -15,7 +16,7 @@ const StockPage = ({
 
     const fetchStock = useCallback(() => {
         console.log('11111111111')
-        const payload = ['bitcoin', 'ether', 'litecoin', 'monero', 'ripple', 'dogecoin', 'dash', 'maidsafeecoin', 'lisk', 'storjconX']
+        const payload = Object.keys(StockNameMap);
         dispatch(fetchStockPrice(payload))
     },[dispatch])
     
@@ -38,18 +39,20 @@ const StockPage = ({
                 <Grid
                     container
                     direction="row"
-                    justify="center"
+                    justify="flex-start"
                     alignItems="center"
+
                 >
                     {stockReducer?.stocks?.map((stock) => {
-                        console.log('123456', stock);
-                        return <StockTicket name={stock.name || ""} price={stock.price || ""} volume={stock.volume || ""} change={stock.change || ""}/>
+                        return (
+                            <StockTicket 
+                                name={StockNameMap[stock.name || ""]}
+                                price={stock.price || "Not found"} 
+                                volume={stock.volume || "-"} 
+                                change={stock.change || ""}
+                            />
+                        );
                     })}       
-                    {/* <StockTicket name={"Name"} price={"123.567979"} volume={"1234"} change={"1234"}/>
-                    <StockTicket name={"Name"} price={"123"} volume={"1234"} change={"1234"}/>
-                    <StockTicket name={"Name"} price={"123"} volume={"1234"} change={"1234"}/>
-                    <StockTicket name={"Name"} price={"123"} volume={"1234"} change={"-1234"}/>
-                    <StockTicket name={"Name"} price={"123"} volume={"1234"} change={"1234"}/> */}
                 </Grid>
             </Container>
         </>

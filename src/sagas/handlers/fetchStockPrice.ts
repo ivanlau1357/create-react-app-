@@ -4,10 +4,20 @@ import { requestGetStock } from '../requests/stock'
 import { StockApiResponse } from '../interface/stock'
 
 export function* fetchStockPrice(action: FETCH_STOCK_PRICE_REQUEST) {
-    const { data } = yield call(requestGetStock)
+    try {
+        
+        const { data } = yield call(requestGetStock, action.payload)
+        
+        yield put({
+            type: 'FETCH_STOCK_PRICE_SUCCESS',
+            payload: data,
+        });
 
-    yield put({
-        type: 'FETCH_STOCK_PRICE_SUCCESS',
-        payload: data,
-    });
+    }catch(e) {
+        yield put({
+            type: 'FETCH_STOCK_PRICE_ERROR',
+            error: e,
+        });
+
+    }
 }

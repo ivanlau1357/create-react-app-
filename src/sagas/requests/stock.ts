@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-export function requestGetStock() {
+export function requestGetStock(payload: string[]) {
     return axios.request({
         method: 'get',
-        url: 'http://localhost:5000/stock?stocks[]=bitcoin&stocks[]=ether',
+        url: 'http://localhost:5000/stock',
+        params: { stocks: payload },
     })
 }

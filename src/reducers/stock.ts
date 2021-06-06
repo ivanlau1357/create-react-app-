@@ -1,4 +1,4 @@
-import { FETCH_STOCK_PRICE_REQUEST, FETCH_STOCK_PRICE_SUCCESS } from '../actions/stock'
+import { FETCH_STOCK_PRICE_REQUEST, FETCH_STOCK_PRICE_SUCCESS, FETCH_STOCK_PRICE_ERROR } from '../actions/stock'
 
 export type Stock = {
     name?: string;
@@ -14,7 +14,7 @@ const initialState: StockState = {
     stocks: [],
 }
 
-type StockActions = FETCH_STOCK_PRICE_REQUEST | FETCH_STOCK_PRICE_SUCCESS
+type StockActions = FETCH_STOCK_PRICE_REQUEST | FETCH_STOCK_PRICE_SUCCESS | FETCH_STOCK_PRICE_ERROR
 
 const StockReducer = (state: StockState = initialState, action: StockActions) => {
     switch(action.type) {
@@ -27,6 +27,14 @@ const StockReducer = (state: StockState = initialState, action: StockActions) =>
             return {
                 ...state,
                 stocks: action.payload
+            }
+        }
+        case "FETCH_STOCK_PRICE_ERROR": {
+            // for handling api error, currently not using
+            return {
+                ...state,
+                ...initialState,
+                error: true,
             }
         }
         default: 

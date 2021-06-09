@@ -15,20 +15,17 @@ const StockPage = ({
     const dispatch = useDispatch();
 
     const fetchStock = useCallback(() => {
-        console.log('11111111111')
         const payload = Object.keys(StockNameMap);
         dispatch(fetchStockPrice(payload))
     },[dispatch])
     
     useEffect(() => {
-        console.log('initalizing interval');
         fetchStock();
         const interval = setInterval(() => {
             fetchStock();
         }, 5000)
         
         return () => {
-            console.log('clearing interval');
             clearInterval(interval);
         }
     }, [fetchStock])

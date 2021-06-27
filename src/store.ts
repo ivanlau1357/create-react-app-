@@ -28,11 +28,32 @@ export type Stock = {
     change?: string;
 }
 
+export interface options {
+    id: string,
+    label: string,
+}
+
+export interface poll {
+    _id: string,
+    title: string,
+    publishedDate: string,
+    answer: {
+        type: 'Single' | 'Multi',
+        options: options[]
+    },
+    voteInfo?: {
+        [key: string]: string;
+    }
+}
+
 export interface Store {
     notesReducer: {
         notes: string[];
     }
     stockReducer: {
         stocks: Stock[];
+    }
+    pollReducer: {
+        polls: poll[];
     }
 }

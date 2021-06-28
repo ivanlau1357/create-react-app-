@@ -1,4 +1,4 @@
-# react-stock
+# react-client
 
 This Project is using below technology
  
@@ -20,10 +20,16 @@ To start this project, you can choose to use local or docker
   docker:
   ```
   1. please run npm install before you start the project
-  2. run docker-compose build
-  3. run docker-compose -p stock up -d
+  2. run docker-compose build --no-cache
+  3. run docker-compose up
   4. localhost:3000 for the health check
-  5. localhost:3000/stock for the stock page
+  ```
+
+  Pre-start knowledge
+  ```
+  1. localhost:3000 for the health check of this project
+  2. localhost:5000/poll for this Task
+  3. please import data in backend project first, otherwise no poll u will see 
   ```
 
 HighLight In this project
